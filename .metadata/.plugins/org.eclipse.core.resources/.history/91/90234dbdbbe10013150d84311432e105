@@ -1,0 +1,26 @@
+package TestJUnit;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.matchers.JUnitMatchers.*;
+
+import org.hamcrest.core.CombinableMatcher;
+
+import MyObjects.Calculator;
+import MyObjects.StringThings;
+
+public class TestStringThings {
+
+	@Test
+	public void testSimpleAnagrams()
+	{
+		StringThings st = new StringThings();
+		boolean res = st.isAnagram(null,  "a");
+		assertFalse(res);
+	}
+
+}

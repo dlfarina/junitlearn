@@ -1,0 +1,75 @@
+package MyObjects;
+
+import java.util.*;
+
+public class StringThings
+{
+	private static char LAST_CHAR = 'z';
+	private static char FIRST_CHAR = 'A';
+	
+	private int charToPos ( char a )
+	{
+		return (int)(a - FIRST_CHAR);
+	}
+	
+	private int[] createHist()
+	{
+		return new int[LAST_CHAR - FIRST_CHAR + 1];
+	}
+	
+	private int[] createHist( String a )
+	{
+		int[] hist = createHist();
+		addToHist( a, hist );
+		return hist;
+	}
+	
+	private void addToHist ( String str, int[] hist )
+	{
+		addToHist( str, hist, 0, str.length() );
+	}
+	
+	private void addToHist ( String str, int[] hist, int startIdx, int length )
+	{
+		for ( int i=0; i<length; i++ )
+			hist[charToPos(str.charAt(i+startIdx))]++;
+	}
+	
+	public boolean isAnagram ( String a, String b )
+	{
+		if ( a == null && b == null ) return true;
+		if ( a.length() != b.length() ) return false;
+		
+		int[] histA = createHist(a);
+		int[] histB = createHist(b);
+		for ( int i=0; i<a.length(); i++ )
+			if ( histA[i] != histB[i] ) return false;
+		return true;
+	}
+	
+	public boolean containsAnagram ( String container, String anagrams )
+	{
+		if ( anagrams == null || anagrams.isEmpty() ) return true;
+		
+		int[] aHist = createHist( anagrams );
+		
+		int[] cHist = createHist();
+		addToHist( container, cHist, 0, anagrams.length() );
+		
+		int i=0;
+		while ( true )
+		{
+			boolean same = true;
+			for ( int j=0; j<aHist.length && same; j++ )
+				same = (aHist[j] == cHist[j] );
+			if ( same ) return true;
+
+			if ( i >= container.length() - anagrams.length()) break;
+
+			cHist[charToPos(container.charAt(i))]--;
+			cHist[charToPos(container.charAt(i+anagrams.length()))]++;
+			i++;
+		}
+		return false;
+	}
+}

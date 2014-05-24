@@ -1,0 +1,76 @@
+package MyObjects;
+
+import java.util.*;
+
+public class StringThings
+{
+//	private static char LAST_CHAR = 'z';
+//	private static char FIRST_CHAR = 'A';
+	
+	private int charToPos ( char a )
+	{
+		return (int)a;
+	}
+	
+	private int[] createHist()
+	{
+		return new int[Character.MAX_VALUE+1];
+	}
+	
+	private int[] createHist( String a )
+	{
+		int[] hist = createHist();
+		addToHist( a, hist );
+		return hist;
+	}
+	
+	private void addToHist ( String str, int[] hist )
+	{
+		addToHist( str, hist, 0, str.length() );
+	}
+	
+	private void addToHist ( String str, int[] hist, int startIdx, int length )
+	{
+		for ( int i=0; i<length; i++ )
+			hist[charToPos(str.charAt(i+startIdx))]++;
+	}
+	
+	public boolean isAnagram ( String a, String b )
+	{
+		if ( a == null && b == null ) return true;
+		if ( a.length() != b.length() ) return false;
+		
+		int[] histA = createHist(a);
+		int[] histB = createHist(b);
+		for ( int i=0; i<histA.length; i++ )
+			if ( histA[i] != histB[i] ) return false;
+		return true;
+	}
+	
+	public boolean containsAnagram ( String whereToSearch, String whatWord )
+	{
+		if ( whatWord == null || whatWord.isEmpty() ) return true;
+		if ( whereToSearch.length() < whatWord.length() ) return false;
+		
+		int[] aHist = createHist( whatWord );
+		
+		int[] cHist = createHist();
+		addToHist( whereToSearch, cHist, 0, whatWord.length() );
+		
+		int i=0;
+		while ( true )
+		{
+			boolean same = true;
+			for ( int j=0; j<aHist.length && same; j++ )
+				same = (aHist[j] == cHist[j] );
+			if ( same ) return true;
+
+			if ( i >= whereToSearch.length() - whatWord.length()) break;
+
+			cHist[charToPos(whereToSearch.charAt(i))]--;
+			cHist[charToPos(whereToSearch.charAt(i+whatWord.length()))]++;
+			i++;
+		}
+		return false;
+	}
+}

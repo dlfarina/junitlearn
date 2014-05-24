@@ -1,0 +1,33 @@
+package MyObjects;
+
+public class StringThings
+{
+	private int charToPos ( char a )
+	{
+		return (int)(a - 'A');
+	}
+	
+	private int[] createHist()
+	{
+		return new int['z' - 'A' + 1];
+	}
+	
+	private int[] createHist( String a )
+	{
+		int[] hist = createHist();
+		addToHist( a, hist );
+	}
+	
+	private void addToHist ( String str, int[] hist )
+	{
+		for (int i=0; i<str.length(); i++ )
+			hist[str.charAt(i) - 'A']++;
+	}
+	
+	public boolean isAnagram ( String a, String b )
+	{
+		int[] histA = createHist(a);
+		int[] histB = createHist(b);		
+		
+	}
+}

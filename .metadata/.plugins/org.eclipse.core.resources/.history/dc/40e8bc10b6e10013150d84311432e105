@@ -1,0 +1,55 @@
+package MyObjects;
+
+import java.util.*;
+
+public class StringThings
+{
+	private int charToPos ( char a )
+	{
+		return (int)(a - 'A');
+	}
+	
+	private int[] createHist()
+	{
+		return new int['z' - 'A' + 1];
+	}
+	
+	private int[] createHist( String a )
+	{
+		int[] hist = createHist();
+		addToHist( a, hist );
+		return hist;
+	}
+	
+	private void addToHist ( String str, int[] hist )
+	{
+		addToHist( str, hist, 0, str.length() );
+	}
+	
+	private void addToHist ( String str, int[] hist, int startIdx, int length )
+	{
+		if ( startIdx + length >= str.length() ) throw new Exception ( "startIdx + length must be less than str.length()");
+		
+		for ( int i=0; i<length; i++ )
+			hist[str.charAt(i+startIdx) - 'A']++;
+	}
+	
+	public boolean isAnagram ( String a, String b )
+	{
+		if ( a == null || b == null ) return false;
+		if ( b.length() < a.length() ) return false;
+		
+		int[] histA = createHist(a);
+		int[] histB = createHist(b);
+		for ( int i=0; i<a.length(); i++ )
+			if ( histA[i] != histB[i] ) return false;
+		return true;
+	}
+	
+//	public bool containsAnagram ( String container, String anagrams )
+//	{
+//		if ( anagrams == null || anagrams.isEmpty() ) return true;
+//		
+//		
+//	}
+}

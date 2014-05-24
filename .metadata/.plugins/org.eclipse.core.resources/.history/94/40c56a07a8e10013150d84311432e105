@@ -1,0 +1,14 @@
+package TestJUnit;
+
+public class Calculator
+{
+	public double Add ( double a, double b )
+	{
+		return a + b;
+	}
+	
+	public void Substract ( double from, double what )
+	{
+		return from - what;
+	}
+}

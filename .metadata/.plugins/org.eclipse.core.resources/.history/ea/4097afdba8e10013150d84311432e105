@@ -1,0 +1,60 @@
+package TestJUnit;
+
+import static org.hamcrest.CoreMatchers.*;
+//import static org.hamcrest.CoreMatchers.allOf;
+//import static org.hamcrest.CoreMatchers.anyOf;
+//import static org.hamcrest.CoreMatchers.equalTo;
+//import static org.hamcrest.CoreMatchers.not;
+//import static org.hamcrest.CoreMatchers.sameInstance;
+//import static org.hamcrest.CoreMatchers.startsWith;
+
+import static org.junit.Assert.assertThat;
+import static org.junit.matchers.JUnitMatches.*;
+//import static org.junit.matchers.JUnitMatchers.both;
+//import static org.junit.matchers.JUnitMatchers.containsString;
+//import static org.junit.matchers.JUnitMatchers.everyItem;
+//import static org.junit.matchers.JUnitMatchers.hasItems;
+
+import java.util.Arrays;
+import junit.framework.Assert;
+
+import org.hamcrest.core.CombinableMatcher;
+import org.junit.Test;
+
+public class TestCalc {
+	
+	@Test
+	public void testAddToIdentity ()
+	{
+		Calculator calc = new Calculator();
+		double a = 0d;
+		double b = 12d;
+		double expected = a + b;
+		double result = calc.Add( a, b );
+		Assert.assertEquals( expected, result );
+	}
+	
+	@Test
+	public void testAdd ()
+	{
+		Calculator calc = new Calculator();
+		double a = 10d;
+		double b = 12d;
+		double expected = a + b;
+		double result = calc.Add( a, b );
+		Assert.assertEquals( expected, result );
+	}
+	
+	@Test
+	public void testSubstract ()
+	{
+		Calculator calc = new Calculator();
+		double a = 1000d;
+		double b = 111;
+		double expected = a - b;
+		double result = calc.Substract(a, b);
+		assertThat(result, is(expected));
+	}
+	
+	
+}

@@ -1,0 +1,10 @@
+1400758752446	Move compilation unit
+1400762996166	Rename method 'Add'
+1400763002685	Rename method 'Substract'
+1400763008362	Rename method 'Multiply'
+1400765029110	Move compilation unit
+1400906634901	Rename local variable 'anagrams'
+1400906685191	Rename method 'acceptValidContainedAnagram'
+1400907991814	Rename local variable 'anagram'
+1400908002333	Rename local variable 'container'
+1400908068267	Rename method 'rejectShorterAnagram'

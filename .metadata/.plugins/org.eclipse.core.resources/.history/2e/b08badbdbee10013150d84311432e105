@@ -1,0 +1,63 @@
+package TestJUnit;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.matchers.JUnitMatchers.*;
+
+import org.hamcrest.core.CombinableMatcher;
+
+import MyObjects.Calculator;
+import MyObjects.StringThings;
+
+public class TestStringThings {
+
+	private static String STR_EMPTY = "";
+	
+	@Test
+	public void assertNullAnagram()
+	{
+		StringThings st = new StringThings();
+		assertTrue(st.isAnagram(null, null));
+	}
+	
+	@Test
+	public void assertEmptyAnagram()
+	{
+		StringThings st = new StringThings();
+		assertTrue(st.isAnagram(STR_EMPTY,  STR_EMPTY));
+	}
+	
+	@Test
+	public void assertValidAnagram()
+	{
+		StringThings st = new StringThings();
+		boolean res = st.isAnagram( "abcd", "dbca" );
+		assertTrue(res);
+	}
+
+	@Test
+	public void detectDifferentLengths()
+	{
+		StringThings st = new StringThings();
+		assertFalse( st.isAnagram( "aaa", "aa" ) );
+	}
+	
+	@Test
+	public void detectWrongAnagram()
+	{
+		StringThings st = new StringThings();
+		assertFalse(st.isAnagram( "abc", "abd" ));
+	}
+	
+	@Test
+	public void acceptAnagram()
+	{
+		StringThings st = new StringThings();
+		assertTrue(st.isAnagram("abcdef",  "fedcba"));
+	}
+	
+}
