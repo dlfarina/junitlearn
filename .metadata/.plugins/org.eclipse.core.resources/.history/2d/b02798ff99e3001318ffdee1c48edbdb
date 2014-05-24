@@ -2,12 +2,8 @@ package MyObjects;
 
 import java.util.*;
 
-/*
- * @author		Dany L. Farina (dlfarina@gmail.com)
- */
 public class StringThings
 {
-	
 	private HashMap<Character,Integer> createHist()
 	{
 		return new HashMap<Character,Integer>();
@@ -38,17 +34,7 @@ public class StringThings
 		}
 	}
 	
-    /** 
-     * Returns true if both provided Strings contain the same letters
-     * the same number of times, regardless of their order.
-     * @param a       	First string to check
-     * @param b         Second string to check
-     * @return          <code>true</code> if both Strings are anagrams,
-     * 					i.e., if they have the same letters in the same
-     * 					quantities, regardless of their order. 
-     *                  <code>false</code> otherwise.
-     * @since           1.0
-     */	public boolean isAnagram ( String a, String b )
+	public boolean isAnagram ( String a, String b )
 	{
 		if ( a == null && b == null ) return true;
 		if ( a.length() != b.length() ) return false;

@@ -47,6 +47,8 @@ public class StringThings
      * 					i.e., if they have the same letters in the same
      * 					quantities, regardless of their order. 
      *                  <code>false</code> otherwise.
+     * @see             Image
+     * @see             ImageObserver
      * @since           1.0
      */	public boolean isAnagram ( String a, String b )
 	{
