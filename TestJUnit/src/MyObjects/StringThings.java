@@ -53,6 +53,17 @@ public class StringThings
 		return true;
 	}
 	
+	/**
+	 * Returns true if any substring of <code>whereToSearch</code> is an
+	 * anagram of <code>whatWord</code>.
+	 * @param whereToSearch	String where possible anagrams of
+	 * 						<code>whatWord</code> are to be looked for.
+	 * @param whatWord		String whose anagrams are to be search inside
+	 * 						of String <code>whereToSearch</code>
+	 * @return				<code>true</code> if <code>whereToSearch</code>
+	 * 						contains an anagram of String <code>whatWord</code>.
+	 * 						<code>false</code>, otherwise.
+	 */
 	public boolean containsAnagram ( String whereToSearch, String whatWord )
 	{
 		if ( whatWord == null || whatWord.isEmpty() ) return true;
